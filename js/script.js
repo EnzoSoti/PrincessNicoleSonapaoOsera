@@ -1,28 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const burger = document.querySelector('.burger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links li');
+document.addEventListener("DOMContentLoaded", function() {
+    const burger = document.querySelector(".burger");
+    const navLinks = document.querySelector(".nav-links");
     
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-        navItems.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
+    burger.addEventListener("click", function() {
+        navLinks.classList.toggle("nav-active");
+        burger.classList.toggle("toggle");
+    });
+    
+    const contactForm = document.getElementById("contactForm");
+    
+    if (contactForm) {
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            
+            if (name === "" || email === "" || message === "") {
+                alert("Please fill in all fields!");
             } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                alert("Thank you for your message, " + name + "! I'll get back to you soon.");
+                contactForm.reset();
             }
         });
-    });
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            if (navLinks.classList.contains('nav-active')) {
-                navLinks.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-                navItems.forEach(link => {
-                    link.style.animation = '';
-                });
-            }
-        });
-    });
+    }
 });

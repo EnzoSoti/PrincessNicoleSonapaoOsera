@@ -1,0 +1,24 @@
+/* Add these styles to create the grid layout */
+.skills-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 30px; /* Space between columns */
+}
+
+.skill-category, .certificates-container {
+    width: 100%;
+}
+
+/* Make sure the parent container has proper width */
+.skills-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
